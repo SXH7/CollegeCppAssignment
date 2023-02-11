@@ -1,14 +1,20 @@
 #include<iostream>
 #include <bits/stdc++.h>
+#include <cstdio>
 
 using namespace std;
 
-int main(){
+int main(int argc, char**argv){
 	int n, i = 2, counter = 0, sum = 1, temp;
 	
-	cout <<"Enter the value of N: ";
-	cin >> n; 
-	
+	if(argc==1){
+		cout << "No arguements passed." << endl;
+		cout <<"Enter the value of N: ";
+		cin >> n; 
+	}
+	else{
+		n = atoi(argv[1]);
+	}
 	while(counter < n-1){
 		if(i%2){
 			temp = pow(i, n);
@@ -20,7 +26,7 @@ int main(){
 		counter++;
 		sum = sum+temp;
 	}
-	
-	cout << sum;
 
+	cout << sum;
+	getchar();
 }
