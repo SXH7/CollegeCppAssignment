@@ -72,12 +72,16 @@ int main(){
         case 1:{
             int length = len(str);
             cout << "The length of string is: " << length;
+            break;
         }
         case 2:
             caps(str);
+            break;
         case 3:
             reverse(str);
+            break;
         case 4:
             address(str);
+            break;
     }
 }
