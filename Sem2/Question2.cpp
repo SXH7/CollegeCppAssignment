@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-void insertionSort(int arr[], int n){
+void selectionSort(int arr[], int n){
     int i = 0;
     while(i<n){
         int j = i;
@@ -25,5 +25,5 @@ void insertionSort(int arr[], int n){
 
 int main() {
     int a[] = {4, 3, 65, 3, 6, 4356};
-    insertionSort(a, 6);
+    selectionSort(a, 6);
 }
