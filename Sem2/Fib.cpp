@@ -1,4 +1,3 @@
-// Online C++ compiler to run C++ program online
 #include <iostream>
 using namespace std;
 
@@ -12,15 +11,19 @@ int fibrec(int x){
 }
 
 int fibiter(int x){
-    int fib = 0;
-    int count = 0;
-    while(count<x){
-        fib+=1;
-        count++;
+    int first = 0;
+    int second = 1;
+    int temp ;
+    while(x>1){
+        temp = second;
+        second = first+second;
+        first = second;
+        x--;
     }
+    return second;
 }
 
 int main() {
     cout<<fibrec(6)<< endl;
-    cout <<fibiter(5);
+    cout << fibiter(5);
 }
