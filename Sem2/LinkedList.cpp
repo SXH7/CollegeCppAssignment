@@ -42,7 +42,7 @@ void SLL::addtohead(int x){
 
 void SLL::display(){
     if(head == 0){
-        cout << "Empty";
+        cout << "Empty" << endl;
     }
     else{
         Node*p = head;
@@ -141,16 +141,64 @@ void SLL::reverse(){
     display();
 }
 
+int menu(){
+    cout << "Enter the function you would like to use:" << endl;
+    cout << "1. Add to head" << endl;
+    cout << "2. Delete from head" << endl;
+    cout << "3. Insert at position" << endl;
+    cout << "4. Delete data" << endl;
+    cout << "5. Display List" << endl;
+    cout << "6. Reverse List" << endl;
+    cout << "7. End program" << endl;
+    int choice;
+    cin >> choice;
+    return choice;
+}
+
 int main() {
     SLL list;
-    list.addtohead(6);
-    list.addtohead(5);
-    list.addtohead(10);
-    list.addtohead(7);
-    list.deletedata(5);
-    list.display();
-    list.insert(100, 2);
-    list.display();
-    list.reverse();
+    bool run = true;
+    while(run){
+        int choice = menu();
+        switch(choice){
+            case 1:{
+                cout << "Enter the element you would like to add.";
+                int x;
+                cin >> x;
+                list.addtohead(x);
+                break;
+            }
+            case 2:{
+                list.deletefromhead();
+                break;
+            }
+            case 3:{
+                cout << "Enter the element followed by position";
+                int x, pos;
+                cin >> x >> pos;
+                list.insert(x, pos);
+                break;
+            }
+            case 4:{
+                cout << "Enter the number you would like to delete";
+                int x;
+                cin >> x;
+                list.deletedata(x);
+                break;
+            }
+            case 5:{
+                list.display();
+                break;
+            }
+            case 6:{
+                list.reverse();
+                break;
+            }
+            case 7:{
+                run = false;
+                break;
+            }
+        }
+    }
     
 }
