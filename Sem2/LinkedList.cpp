@@ -23,7 +23,8 @@ class SLL{
     void addtohead(int x);
     void display();
     int count();
-    void deletefromhead(int data);
+    void deletefromhead();
+    void deletedata(int data);
 };
 
 void SLL::addtohead(int x){
@@ -61,14 +62,47 @@ int SLL::count(){
     return count;
 }
 
-int SLL::deletefromhead(){
-    
+void SLL::deletefromhead(){
+    if(head==0){
+        cout << "LL Empty";
+    }
+    else{
+        Node*p = head;
+        head = p->next;
+        delete p;
+    }
+}
+
+void SLL::deletedata(int x){
+    if(head == 0){
+        cout << "LL Empty";
+    }
+    else if(head->data == x){
+        deletefromhead();
+    }
+    else{
+        Node*p = head;
+        Node*prev = head;
+        while(p!=0){
+            if(p->data == x){
+                prev->next = p->next;
+                delete p;
+                break;
+            }
+            prev = p;
+            p = p->next;
+        }
+    }
 }
 
 int main() {
     SLL list;
+    list.addtohead(6);
     list.addtohead(5);
     list.addtohead(10);
+    list.addtohead(7);
     list.display();
-    cout << "Number of elements: " << list.count();
+    list.deletedata(5);
+    list.display();
+    
 }
