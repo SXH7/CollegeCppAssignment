@@ -25,6 +25,7 @@ class SLL{
     int count();
     void deletefromhead();
     void deletedata(int data);
+    void insert(int data, int position);
 };
 
 void SLL::addtohead(int x){
@@ -49,6 +50,7 @@ void SLL::display(){
             cout << p->data << " ";
             p=p->next;
         }
+        cout << endl;
     }
 }
 
@@ -95,6 +97,25 @@ void SLL::deletedata(int x){
     }
 }
 
+void SLL::insert(int x, int position){
+    Node*p = new Node(x);
+    Node*in = head;
+    Node*prev = in;
+    if(position==1){
+        addtohead(x);
+    }
+    else{
+        int count = 1;
+        while(count!=position){
+            prev = in;
+            in = in->next;
+            count++;
+        }
+        prev->next = p;
+        p->next = in;
+    }
+}
+
 int main() {
     SLL list;
     list.addtohead(6);
@@ -103,6 +124,8 @@ int main() {
     list.addtohead(7);
     list.display();
     list.deletedata(5);
+    list.display();
+    list.insert(100, 2);
     list.display();
     
 }
