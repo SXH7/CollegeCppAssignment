@@ -26,6 +26,7 @@ class SLL{
     void deletefromhead();
     void deletedata(int data);
     void insert(int data, int position);
+    void reverse();
 };
 
 void SLL::addtohead(int x){
@@ -116,16 +117,40 @@ void SLL::insert(int x, int position){
     }
 }
 
+void SLL::reverse(){
+    if(head == 0){
+        cout << "LL Empty";
+    }
+    else if(head->next == 0){
+        cout << "Already Reversed";
+    }
+    else{
+        Node*prev = 0;
+        Node*p = head;
+        Node*nx = head->next;
+        while(p!=0){
+            p->next = prev;
+            prev = p;
+            p = nx;
+            if(nx!=0){
+                nx = nx->next;
+            }
+        }
+        head = prev;
+    }
+    display();
+}
+
 int main() {
     SLL list;
     list.addtohead(6);
     list.addtohead(5);
     list.addtohead(10);
     list.addtohead(7);
-    list.display();
     list.deletedata(5);
     list.display();
     list.insert(100, 2);
     list.display();
+    list.reverse();
     
 }
