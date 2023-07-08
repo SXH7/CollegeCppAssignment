@@ -157,14 +157,101 @@ void DLL::deletedata(int x){
     }
 }
 
-int main(){
+void DLL::reverse(){
+    if(head->next==0){
+        cout << "Already Reversed";
+    }
+    else{
+        Node*pr = head;
+        Node*p = pr->next;
+        Node*nx = p->next;
+        while(nx!=0){
+            p->next = pr;
+            pr = p;
+            p = nx;
+            nx = nx->next;
+        }
+        p->next = pr;
+        head->next = 0;
+        head = p;
+    }
+}
+
+int menu(){
+    cout << "Enter the function you would like to use:" << endl;
+    cout << "1. Add to head" << endl;
+    cout << "2. Delete from head" << endl;
+    cout << "3. Insert at position" << endl;
+    cout << "4. Delete data" << endl;
+    cout << "5. Display List" << endl;
+    cout << "6. Reverse List" << endl;
+    cout << "7. Add to tail" << endl;
+    cout << "8. Delete from tail" << endl;
+    cout << "9. Count" << endl;
+    cout << "10. Stop" << endl;
+    int choice;
+    cin >> choice;
+    return choice;
+}
+
+int main() {
     DLL list;
-    list.addtohead(10);
-    list.addtotail(50);
-    list.addtohead(22);
-    list.display();
-    list.insert(2,3);
-    list.display();
-    list.deletedata(2);
-    list.display();
+    bool run = true;
+    while(run){
+        int choice = menu();
+        switch(choice){
+            case 1:{
+                cout << "Enter the element you would like to add.";
+                int x;
+                cin >> x;
+                list.addtohead(x);
+                break;
+            }
+            case 2:{
+                list.deletefromhead();
+                break;
+            }
+            case 3:{
+                cout << "Enter the element followed by position";
+                int x, pos;
+                cin >> x >> pos;
+                list.insert(x, pos);
+                break;
+            }
+            case 4:{
+                cout << "Enter the number you would like to delete";
+                int x;
+                cin >> x;
+                list.deletedata(x);
+                break;
+            }
+            case 5:{
+                list.display();
+                break;
+            }
+            case 6:{
+                list.reverse();
+                break;
+            }
+            case 7:{
+                cout << "Enter the number you would like to add.";
+                int x;
+                cin >> x;
+                list.addtotail(x);
+                break;
+            }
+            case 8:{
+                list.deletefromtail();
+                break;
+            }
+            case 9:{
+                cout << list.count();
+            }
+            case 10:{
+                run = false;
+                break;
+            }
+        }
+    }
+    
 }
