@@ -7,4 +7,7 @@ Print["c = ", NumberForm[c, 16]];
 Print["f[c] = ", NumberForm[f[c], 16]];];
 
 f[x_] = x^3+2*x^2-3*x-1
+
 Bisection[1,2,30]
+
+numbers are limits, 10^-7 is absolute convergence
