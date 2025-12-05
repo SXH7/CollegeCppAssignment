@@ -8,3 +8,8 @@ k=k+1;] ;] ;
  Print["Root = ", NumberForm[p1, 16]];
  Print["Iterations = ", k];
  Print["f[p] = ",NumberForm[f[p], 16]];] 
+
+f[x_] = 
+NewtonRaphson[2, 13]
+
+1st is upper limit, 2nd is iterations
