@@ -1,0 +1,10 @@
+Bisection[a0_, b0_, m_]:= Module[{a=N[a0], b=N[b0]}, c=(a+b)/2;
+k=0;
+While[k<m&&((b-a)/2)>10^(-7), If[Sign[f[b]]==Sign[f[c]], b=c, a=c];
+c=(a+b)/2
+k=k+1;];
+Print["c = ", NumberForm[c, 16]];
+Print["f[c] = ", NumberForm[f[c], 16]];];
+
+f[x_] = x^3+2*x^2-3*x-1
+Bisection[1,2,30]

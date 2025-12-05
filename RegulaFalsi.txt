@@ -1,0 +1,12 @@
+RegulaFalsi[a0_,b0_,m_]:=Module[{},a=N[a0];b=N[b0];
+If[f[a]*f[b]>0, Print["Interval is incorrect"];Break[],
+c =( a*f[b]-b*f[a])/(f[b]-f[a]);
+k=0;
+While[(k<m&&Abs[f[c]]>10^(-12)), If[Sign[f[b]] == Sign[f[c]], b=c, a=c;];
+c =( a*f[b]-b*f[a])/(f[b]-f[a]);
+k=k+1;];
+Print["Result after ", k, " iterations is ", NumberForm[c,16]];
+Print["f[c] = ", NumberForm[f[c],16]];];]
+
+f[x_] = x^3+2*x^2-3*x-1;
+RegulaFalsi[1,2,50]

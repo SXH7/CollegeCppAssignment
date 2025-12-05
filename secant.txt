@@ -1,0 +1,15 @@
+
+SecantMethod[x0_, x1_, max_]:=Module[{}, k=1;p0=N[x0];
+p1=N[x1];
+p2=p1;
+p1=p0;
+While[(k<max&&Abs[f[p2]]>5*10^-7),
+p0=p1;
+p1=p2;
+p2=p1-(f[p1]*(p1-p0))/(f[p1]-f[p0]);
+k=k+1;];
+Print["Root = ", NumberForm[p2,11]];
+Print["f[p] = ", NumberForm[f[p2], 11]];
+Print["Iteratrions Performed = ", k];]
+
+f[x_] = x^3-2*x-5; SecantMethod[3,2,50];

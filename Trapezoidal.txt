@@ -1,0 +1,8 @@
+Trapezoidal[a_, b_]:=Module[{}, 
+k = (b-a)/2*(f[a]+f[b]);
+Print["I = ", N[k]];
+error=Abs[k-Integrate[f[x],{x,0,1}]];
+Print["Absolute error is = ", N[error]];]
+
+f[x_] = x
+Trapezoidal[0, 1]
