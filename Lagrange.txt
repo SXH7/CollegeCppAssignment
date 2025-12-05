@@ -1,0 +1,10 @@
+Lagrange[x_,f_,y_]:=Module[{s=0,p=1,m=Length[x]},
+For[i=1,i<=m, i=i+1,
+For[j=1,j<=m,j=j+1,
+If[j!=i,
+p=(p*(y-x[[j]]))/(x[[i]]-x[[j]]); Continue;];];
+s=s+p*f[[i]];p=1;];
+Print["Function value at y = ", s];
+Print["Absolute Error = ", Abs[s-\[ExponentialE]^y]];]
+
+x = {-1, 0, 1}; f = {\[ExponentialE]^-1, 1, \[ExponentialE]}; Lagrange[x, f, 0.5]
